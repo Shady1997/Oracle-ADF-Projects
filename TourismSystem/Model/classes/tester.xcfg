@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.tourism.app.model.module.AppModuleAM">
+      <AppModuleConfig name="16EB20CC7AD" DBconnection="java:comp/env/jdbc/TourismDBConnectionDS" ApplicationName="com.tourism.app.model.module.AppModuleAM" DeployPlatform="LOCAL" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" JDBCName="TourismDBConnection" BC4JConfigName="AppModuleAMLocal" jbo.project="com.tourism.app.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Oracle" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="com.tourism.app.model.module.AppModuleAM"/>
+         <Tester FullProxyInterfaceName="com.tourism.app.model.module.common.AppModuleAM"/>
+         <Custom LastUsedConfiguration="AppModuleAMLocal" JDBCDataSource="java:comp/env/jdbc/TourismDBConnectionDS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="reservationPageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Invoice1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Invoice1Iterator"/>
+    <searchRegion Criteria="InvoiceVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Invoice1Iterator" id="InvoiceVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Invoice1Iterator" id="Invoice1">
+      <nodeDefinition DefName="com.tourism.app.model.view.InvoiceVO" Name="Invoice10">
+        <AttrNames>
+          <Item Value="InvoiceId"/>
+          <Item Value="Price"/>
+          <Item Value="PaymentMethod"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="IsPaid"/>
+          <Item Value="ReservationId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Invoice1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

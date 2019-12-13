@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CountryEO"
+  Version="11.1.2.64.36"
+  DBObjectType="table"
+  DBObjectName="COUNTRY"
+  AliasName="CountryEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <Attribute
+    Name="CountryId"
+    ColumnName="COUNTRY_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="COUNTRY"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="CountryName"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="COUNTRY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COUNTRY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Trips"
+    Association="com.tourism.app.model.association.TripsFk1AS"
+    AssociationEnd="com.tourism.app.model.association.TripsFk1AS.Trips"
+    AssociationOtherEnd="com.tourism.app.model.association.TripsFk1AS.Country"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="CountryPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="COUNTRY_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.CountryEO.CountryId"/>
+    </AttrArray>
+  </Key>
+</Entity>

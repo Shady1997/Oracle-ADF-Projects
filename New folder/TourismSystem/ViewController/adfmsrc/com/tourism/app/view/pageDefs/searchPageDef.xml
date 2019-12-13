@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="searchPageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Trips1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Trips1Iterator"/>
+    <searchRegion Criteria="TripsVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="Trips1Iterator" id="TripsVOCriteriaQuery"/>
+    <iterator Binds="Reservation2" RangeSize="25" DataControl="AppModuleAMDataControl" id="Reservation2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Trips1Iterator" id="Trips1">
+      <nodeDefinition DefName="com.tourism.app.model.view.TripsVO" Name="Trips10">
+        <AttrNames>
+          <Item Value="TripId"/>
+          <Item Value="CountryId"/>
+          <Item Value="TravelDate"/>
+          <Item Value="ArriveDate"/>
+          <Item Value="Price"/>
+          <Item Value="NumbersOfPersons"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Trips1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Reservation2Iterator" id="Create" RequiresUpdateModel="true" Action="createRow"/>
+  </bindings>
+</pageDefinition>

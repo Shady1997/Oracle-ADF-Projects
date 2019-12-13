@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReservationEO"
+  Version="11.1.2.64.36"
+  DBObjectType="table"
+  DBObjectName="RESERVATION"
+  AliasName="ReservationEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="com.tourism.app.model.entity.ReservationEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ReservationId"
+    ColumnName="RESERVATION_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RESERVATION"
+    PrimaryKey="true"
+    RetrievedOnInsert="true">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("RESERVATION_SEQUENCE",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="ReservationDate"
+    IsNotNull="true"
+    ColumnName="RESERVATION_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="RESERVATION"
+    IsUpdateable="false">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="TripId"
+    IsNotNull="true"
+    ColumnName="TRIP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="RESERVATION"/>
+  <AccessorAttribute
+    Name="Invoice"
+    Association="com.tourism.app.model.association.InvoiceFk1AS"
+    AssociationEnd="com.tourism.app.model.association.InvoiceFk1AS.Invoice"
+    AssociationOtherEnd="com.tourism.app.model.association.InvoiceFk1AS.Reservation"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Passengers"
+    Association="com.tourism.app.model.association.PassengersFk1AS"
+    AssociationEnd="com.tourism.app.model.association.PassengersFk1AS.Passengers"
+    AssociationOtherEnd="com.tourism.app.model.association.PassengersFk1AS.Reservation"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Trips"
+    Association="com.tourism.app.model.association.ReservationFk1AS"
+    AssociationEnd="com.tourism.app.model.association.ReservationFk1AS.Trips"
+    AssociationOtherEnd="com.tourism.app.model.association.ReservationFk1AS.Reservation"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="ReservationPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="RESERVATION_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.ReservationEO.ReservationId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ReservationFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="TRIPS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="RESERVATION_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.ReservationEO.TripId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.64.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.tourism.app.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/search.jsff" usageId="com_tourism_app_view_searchPageDef"/>
+    <page path="/test.jsf" usageId="com_tourism_app_view_testPageDef"/>
+    <page path="/AddAndEditTrip.jsff" usageId="com_tourism_app_view_AddAndEditTripPageDef"/>
+    <page path="/makeReservation.jsff" usageId="com_tourism_app_view_makeReservationPageDef"/>
+    <page path="/addPassenger.jsff" usageId="com_tourism_app_view_addPassengerPageDef"/>
+    <page path="/reservation.jsff" usageId="com_tourism_app_view_reservationPageDef"/>
+    <page path="/test2.jsf" usageId="com_tourism_app_view_test2PageDef"/>
+    <page path="/AddInvoice.jsff" usageId="com_tourism_app_view_AddInvoicePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_tourism_app_view_searchPageDef" path="com.tourism.app.view.pageDefs.searchPageDef"/>
+    <page id="com_tourism_app_view_testPageDef" path="com.tourism.app.view.pageDefs.testPageDef"/>
+    <page id="com_tourism_app_view_AddAndEditTripPageDef" path="com.tourism.app.view.pageDefs.AddAndEditTripPageDef"/>
+    <page id="com_tourism_app_view_makeReservationPageDef" path="com.tourism.app.view.pageDefs.makeReservationPageDef"/>
+    <page id="com_tourism_app_view_addPassengerPageDef" path="com.tourism.app.view.pageDefs.addPassengerPageDef"/>
+    <page id="com_tourism_app_view_reservationPageDef" path="com.tourism.app.view.pageDefs.reservationPageDef"/>
+    <page id="com_tourism_app_view_test2PageDef" path="com.tourism.app.view.pageDefs.test2PageDef"/>
+    <page id="com_tourism_app_view_AddInvoicePageDef" path="com.tourism.app.view.pageDefs.AddInvoicePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleAMDataControl" Package="com.tourism.app.model.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

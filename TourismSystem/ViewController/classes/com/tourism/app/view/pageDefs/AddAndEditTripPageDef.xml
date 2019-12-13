@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="AddAndEditTripPageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Trips1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Trips1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="Trips1Iterator" StaticList="false" Uses="LOV_CountryId" id="CountryId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Trips1Iterator" id="TravelDate">
+      <AttrNames>
+        <Item Value="TravelDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Trips1Iterator" id="ArriveDate">
+      <AttrNames>
+        <Item Value="ArriveDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Trips1Iterator" id="Price">
+      <AttrNames>
+        <Item Value="Price"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Trips1Iterator" id="NumbersOfPersons">
+      <AttrNames>
+        <Item Value="NumbersOfPersons"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.DocumentNumber.inputValue}" label="#{bindings.DocumentNumber.hints.label}"
+                  required="#{bindings.DocumentNumber.hints.mandatory}"
+                  columns="#{bindings.DocumentNumber.hints.displayWidth}"
+                  maximumLength="#{bindings.DocumentNumber.hints.precision}"
+                  shortDesc="#{bindings.DocumentNumber.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.DocumentNumber.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.DocumentNumber.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.InvoiceId.inputValue}" label="#{bindings.InvoiceId.hints.label}"
+                  required="#{bindings.InvoiceId.hints.mandatory}" columns="#{bindings.InvoiceId.hints.displayWidth}"
+                  maximumLength="#{bindings.InvoiceId.hints.precision}" shortDesc="#{bindings.InvoiceId.hints.tooltip}"
+                  id="it2">
+      <f:validator binding="#{bindings.InvoiceId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.InvoiceId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.IsPaid.inputValue}" label="#{bindings.IsPaid.hints.label}"
+                  required="#{bindings.IsPaid.hints.mandatory}" columns="#{bindings.IsPaid.hints.displayWidth}"
+                  maximumLength="#{bindings.IsPaid.hints.precision}" shortDesc="#{bindings.IsPaid.hints.tooltip}"
+                  id="it3">
+      <f:validator binding="#{bindings.IsPaid.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.IsPaid.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.PaymentMethod.inputValue}" label="#{bindings.PaymentMethod.hints.label}"
+                  required="#{bindings.PaymentMethod.hints.mandatory}"
+                  columns="#{bindings.PaymentMethod.hints.displayWidth}"
+                  maximumLength="#{bindings.PaymentMethod.hints.precision}"
+                  shortDesc="#{bindings.PaymentMethod.hints.tooltip}" id="it4">
+      <f:validator binding="#{bindings.PaymentMethod.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Price.inputValue}" label="#{bindings.Price.hints.label}"
+                  required="#{bindings.Price.hints.mandatory}" columns="#{bindings.Price.hints.displayWidth}"
+                  maximumLength="#{bindings.Price.hints.precision}" shortDesc="#{bindings.Price.hints.tooltip}"
+                  id="it5">
+      <f:validator binding="#{bindings.Price.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Price.format}"/>
+    </af:inputText>
+    <af:selectOneChoice value="#{bindings.ReservationId.inputValue}" label="#{bindings.ReservationId.label}"
+                        required="#{bindings.ReservationId.hints.mandatory}"
+                        shortDesc="#{bindings.ReservationId.hints.tooltip}" id="soc1">
+      <f:selectItems value="#{bindings.ReservationId.items}" id="si1"/>
+    </af:selectOneChoice>
+  </af:panelFormLayout>
+  <af:group id="g1">
+    <af:commandButton text="Save" id="cb1" actionListener="#{bindings.Commit.execute}" action="backToInvoice"/>
+    <af:commandButton text="Back" id="cb2" actionListener="#{bindings.Rollback.execute}" immediate="true"
+                      action="backToInvoice">
+      <af:resetActionListener/>
+    </af:commandButton>
+  </af:group>
+</ui:composition>

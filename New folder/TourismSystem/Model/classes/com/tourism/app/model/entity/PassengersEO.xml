@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PassengersEO"
+  Version="11.1.2.64.36"
+  DBObjectType="table"
+  DBObjectName="PASSENGERS"
+  AliasName="PassengersEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation"
+  RowClass="com.tourism.app.model.entity.PassengersEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="PassengersId"
+    ColumnName="PASSENGERS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PASSENGERS"
+    PrimaryKey="true"
+    RetrievedOnInsert="true">
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("PASSENGER_SEQUENCE",adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="PassengerName"
+    IsNotNull="true"
+    Precision="40"
+    ColumnName="PASSENGER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PASSENGERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReservationId"
+    IsNotNull="true"
+    ColumnName="RESERVATION_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PASSENGERS"/>
+  <Attribute
+    Name="Age"
+    ColumnName="AGE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PASSENGERS"/>
+  <Attribute
+    Name="Address"
+    Precision="60"
+    ColumnName="ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PASSENGERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="NationalId"
+    IsNotNull="true"
+    ColumnName="NATIONAL_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PASSENGERS">
+    <validation:LengthValidationBean
+      Name="NationalId_Rule_0"
+      ResId="com.tourism.app.model.entity.PassengersEO.NationalId_Rule_0"
+      OnAttribute="NationalId"
+      CompareType="EQUALTO"
+      DataType="CHARACTER"
+      CompareLength="14"
+      Inverse="false"/>
+  </Attribute>
+  <Attribute
+    Name="Job"
+    Precision="40"
+    ColumnName="JOB"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PASSENGERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PhoneNumber"
+    Precision="20"
+    ColumnName="PHONE_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PASSENGERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Reservation"
+    Association="com.tourism.app.model.association.PassengersFk1AS"
+    AssociationEnd="com.tourism.app.model.association.PassengersFk1AS.Reservation"
+    AssociationOtherEnd="com.tourism.app.model.association.PassengersFk1AS.Passengers"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PassengersPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PASSENGERS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.PassengersEO.PassengersId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PassengersFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="RESERVATION_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PASSENGERS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.PassengersEO.ReservationId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.tourism.app.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Invoice2VO"
+  Version="11.1.2.64.36"
+  SelectList="InvoiceEO.DOCUMENT_NUMBER, 
+       InvoiceEO.INVOICE_ID, 
+       InvoiceEO.IS_PAID, 
+       InvoiceEO.PAYMENT_METHOD, 
+       InvoiceEO.PRICE, 
+       InvoiceEO.RESERVATION_ID"
+  FromList="INVOICE InvoiceEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.tourism.app.model.view.Invoice2VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ResPassengerNoInvoiceLov1"
+    ViewObjectName="com.tourism.app.model.view.ResPassengerNoInvoiceLov"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ReservationId"
+    ListVOName="ResPassengerNoInvoiceLov1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ReservationId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ReservationId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="PassengerName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="InvoiceEO"
+    Entity="com.tourism.app.model.entity.InvoiceEO"/>
+  <ViewAttribute
+    Name="DocumentNumber"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DocumentNumber"
+    EntityUsage="InvoiceEO"
+    AliasName="DOCUMENT_NUMBER"/>
+  <ViewAttribute
+    Name="InvoiceId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="InvoiceId"
+    EntityUsage="InvoiceEO"
+    AliasName="INVOICE_ID"/>
+  <ViewAttribute
+    Name="IsPaid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IsPaid"
+    EntityUsage="InvoiceEO"
+    AliasName="IS_PAID"/>
+  <ViewAttribute
+    Name="PaymentMethod"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PaymentMethod"
+    EntityUsage="InvoiceEO"
+    AliasName="PAYMENT_METHOD"/>
+  <ViewAttribute
+    Name="Price"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Price"
+    EntityUsage="InvoiceEO"
+    AliasName="PRICE"/>
+  <ViewAttribute
+    Name="ReservationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ReservationId"
+    EntityUsage="InvoiceEO"
+    AliasName="RESERVATION_ID"
+    LOVName="LOV_ReservationId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.tourism.app.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

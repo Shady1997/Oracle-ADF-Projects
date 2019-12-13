@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="TripsEO" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.TripsVOCriteriaQuery.queryDescriptor}"
+                model="#{bindings.TripsVOCriteriaQuery.queryModel}"
+                queryListener="#{bindings.TripsVOCriteriaQuery.processQuery}"
+                queryOperationListener="#{bindings.TripsVOCriteriaQuery.processQueryOperation}" rows="1"
+                maxColumns="3"/>
+    </af:panelHeader>
+    <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:commandButton text="Add New Trip" id="cb3" actionListener="#{bindings.CreateInsert.execute}"
+                            disabled="#{!bindings.CreateInsert.enabled}" action="AddAndEdit"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.Trips1.collectionModel}" var="row" rows="#{bindings.Trips1.rangeSize}"
+                emptyText="#{bindings.Trips1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.Trips1.rangeSize}" rowBandingInterval="0"
+                selectedRowKeys="#{bindings.Trips1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.Trips1.collectionModel.makeCurrent}" rowSelection="single" id="resId1"
+                styleClass="AFAuxiliaryStretchWidth" partialTriggers="::cb3 cb2" inlineStyle="text-align:center;">
+        <af:column sortProperty="#{bindings.Trips1.hints.TripId.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.TripId.label}" id="resId1c1" align="center">
+          <af:outputText value="#{row.TripId}" shortDesc="#{bindings.Trips1.hints.TripId.tooltip}" id="ot1">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Trips1.hints.TripId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Trips1.hints.CountryId.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.CountryId.label}" id="resId1c2" align="center">
+          <af:selectOneChoice value="#{row.bindings.CountryId.inputValue}" label="#{row.bindings.CountryId.label}"
+                              required="#{bindings.Trips1.hints.CountryId.mandatory}"
+                              shortDesc="#{bindings.Trips1.hints.CountryId.tooltip}" readOnly="true" id="soc1">
+            <f:selectItems value="#{row.bindings.CountryId.items}" id="si1"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column sortProperty="#{bindings.Trips1.hints.TravelDate.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.TravelDate.label}" id="resId1c3" align="center">
+          <af:outputText value="#{row.TravelDate}" shortDesc="#{bindings.Trips1.hints.TravelDate.tooltip}" id="ot2">
+            <af:convertDateTime pattern="#{bindings.Trips1.hints.TravelDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Trips1.hints.ArriveDate.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.ArriveDate.label}" id="resId1c4" align="center">
+          <af:outputText value="#{row.ArriveDate}" shortDesc="#{bindings.Trips1.hints.ArriveDate.tooltip}" id="ot3">
+            <af:convertDateTime pattern="#{bindings.Trips1.hints.ArriveDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Trips1.hints.Price.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.Price.label}" id="resId1c5" align="center">
+          <af:outputText value="#{row.Price}" shortDesc="#{bindings.Trips1.hints.Price.tooltip}" id="ot4">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Trips1.hints.Price.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Trips1.hints.NumbersOfPersons.name}" sortable="false"
+                   headerText="#{bindings.Trips1.hints.NumbersOfPersons.label}" id="resId1c6" align="center">
+          <af:outputText value="#{row.NumbersOfPersons}" shortDesc="#{bindings.Trips1.hints.NumbersOfPersons.tooltip}"
+                         id="ot5">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Trips1.hints.NumbersOfPersons.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column id="c1">
+          <af:toolbar id="t1">
+            <af:commandButton text="Edit" id="cb1" action="AddAndEdit"/>
+            <af:commandButton text="Reserve" id="cb2" actionListener="#{bindings.Create.execute}"
+                              action="reserve"/>
+          </af:toolbar>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</ui:composition>

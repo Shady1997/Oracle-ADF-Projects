@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TripsROVO"
+  Version="11.1.2.64.36"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery><![CDATA[SELECT 
+    TRIPS.TRIP_ID TRIP_ID, 
+    TRIPS.COUNTRY_ID COUNTRY_ID, 
+    TRIPS.TRAVEL_DATE TRAVEL_DATE, 
+    TRIPS.ARRIVE_DATE ARRIVE_DATE, 
+    TRIPS.PRICE PRICE, 
+    TRIPS.NUMBERS_OF_PERSONS NUMBERS_OF_PERSONS 
+FROM 
+    TRIPS]]></SQLQuery>
+  <ViewAttribute
+    Name="TripId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TRIP_ID"
+    Expression="TRIP_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CountryId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="COUNTRY_ID"
+    Expression="COUNTRY_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TravelDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="TRAVEL_DATE"
+    Expression="TRAVEL_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="ArriveDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="ARRIVE_DATE"
+    Expression="ARRIVE_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="Price"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PRICE"
+    Expression="PRICE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="NumbersOfPersons"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="NUMBERS_OF_PERSONS"
+    Expression="NUMBERS_OF_PERSONS"
+    SQLType="NUMERIC"/>
+</ViewObject>

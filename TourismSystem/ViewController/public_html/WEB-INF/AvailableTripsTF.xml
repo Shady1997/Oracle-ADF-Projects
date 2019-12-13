@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AvailableTripsTF">
+    <default-activity>search</default-activity>
+    <managed-bean id="__10">
+      <managed-bean-name>InsertAndCommit</managed-bean-name>
+      <managed-bean-class>com.tourism.app.view.beans.InsertAndCommitBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>addPassengerBean</managed-bean-name>
+      <managed-bean-class>com.tourism.app.view.beans.addPassengerClass</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>MakePaymentBean</managed-bean-name>
+      <managed-bean-class>com.tourism.app.view.beans.MakePaymentClass</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="search">
+      <page>/search.jsff</page>
+    </view>
+    <view id="AddAndEditTrip">
+      <page>/AddAndEditTrip.jsff</page>
+    </view>
+    <view id="makeReservation">
+      <page>/makeReservation.jsff</page>
+    </view>
+    <view id="addPassenger">
+      <page>/addPassenger.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>search</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>AddAndEdit</from-outcome>
+        <to-activity-id>AddAndEditTrip</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>reserve</from-outcome>
+        <to-activity-id>makeReservation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>AddAndEditTrip</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>makeReservation</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>AddPassenger</from-outcome>
+        <to-activity-id>addPassenger</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>cancelReservation</from-outcome>
+        <to-activity-id>search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>addPassenger</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>backToReservation</from-outcome>
+        <to-activity-id>makeReservation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

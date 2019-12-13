@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PassengersVO"
+  Version="11.1.2.64.36"
+  SelectList="PassengersEO.PASSENGERS_ID, 
+       PassengersEO.PASSENGER_NAME, 
+       PassengersEO.RESERVATION_ID, 
+       PassengersEO.AGE, 
+       PassengersEO.ADDRESS, 
+       PassengersEO.NATIONAL_ID, 
+       PassengersEO.JOB, 
+       PassengersEO.PHONE_NUMBER"
+  FromList="PASSENGERS PassengersEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <EntityUsage
+    Name="PassengersEO"
+    Entity="com.tourism.app.model.entity.PassengersEO"/>
+  <ViewAttribute
+    Name="PassengersId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PassengersId"
+    EntityUsage="PassengersEO"
+    AliasName="PASSENGERS_ID"/>
+  <ViewAttribute
+    Name="PassengerName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PassengerName"
+    EntityUsage="PassengersEO"
+    AliasName="PASSENGER_NAME"/>
+  <ViewAttribute
+    Name="ReservationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ReservationId"
+    EntityUsage="PassengersEO"
+    AliasName="RESERVATION_ID"/>
+  <ViewAttribute
+    Name="Age"
+    PrecisionRule="true"
+    EntityAttrName="Age"
+    EntityUsage="PassengersEO"
+    AliasName="AGE"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="PassengersEO"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
+    Name="NationalId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="NationalId"
+    EntityUsage="PassengersEO"
+    AliasName="NATIONAL_ID"/>
+  <ViewAttribute
+    Name="Job"
+    PrecisionRule="true"
+    EntityAttrName="Job"
+    EntityUsage="PassengersEO"
+    AliasName="JOB"/>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="PassengersEO"
+    AliasName="PHONE_NUMBER"/>
+</ViewObject>

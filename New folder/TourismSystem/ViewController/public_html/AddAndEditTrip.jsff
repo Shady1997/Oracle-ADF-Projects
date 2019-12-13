@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:selectOneChoice value="#{bindings.CountryId.inputValue}" label="#{bindings.CountryId.label}"
+                        required="#{bindings.CountryId.hints.mandatory}" shortDesc="#{bindings.CountryId.hints.tooltip}"
+                        id="soc1">
+      <f:selectItems value="#{bindings.CountryId.items}" id="si1"/>
+    </af:selectOneChoice>
+    <af:inputDate value="#{bindings.TravelDate.inputValue}" label="#{bindings.TravelDate.hints.label}"
+                  required="#{bindings.TravelDate.hints.mandatory}" columns="#{bindings.TravelDate.hints.displayWidth}"
+                  shortDesc="#{bindings.TravelDate.hints.tooltip}" id="id1">
+      <f:validator binding="#{bindings.TravelDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.TravelDate.format}"/>
+    </af:inputDate>
+    <af:inputDate value="#{bindings.ArriveDate.inputValue}" label="#{bindings.ArriveDate.hints.label}"
+                  required="#{bindings.ArriveDate.hints.mandatory}" columns="#{bindings.ArriveDate.hints.displayWidth}"
+                  shortDesc="#{bindings.ArriveDate.hints.tooltip}" id="id2">
+      <f:validator binding="#{bindings.ArriveDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.ArriveDate.format}"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.Price.inputValue}" label="#{bindings.Price.hints.label}"
+                  required="#{bindings.Price.hints.mandatory}" columns="#{bindings.Price.hints.displayWidth}"
+                  maximumLength="#{bindings.Price.hints.precision}" shortDesc="#{bindings.Price.hints.tooltip}"
+                  id="it1">
+      <f:validator binding="#{bindings.Price.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Price.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.NumbersOfPersons.inputValue}" label="#{bindings.NumbersOfPersons.hints.label}"
+                  required="#{bindings.NumbersOfPersons.hints.mandatory}"
+                  columns="#{bindings.NumbersOfPersons.hints.displayWidth}"
+                  maximumLength="#{bindings.NumbersOfPersons.hints.precision}"
+                  shortDesc="#{bindings.NumbersOfPersons.hints.tooltip}" id="it2">
+      <f:validator binding="#{bindings.NumbersOfPersons.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.NumbersOfPersons.format}"/>
+    </af:inputText>
+    <af:toolbar id="t1">
+      <af:commandButton text="Save" id="cb1" actionListener="#{bindings.Commit.execute}" action="back"/>
+      <af:commandButton text="Cancel" id="cb2" actionListener="#{bindings.Rollback.execute}" immediate="true" action="back">
+        <af:resetActionListener/>
+      </af:commandButton>
+    </af:toolbar>
+  </af:panelFormLayout>
+</ui:composition>

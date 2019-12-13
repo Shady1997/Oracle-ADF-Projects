@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:display-name>homeTemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>main</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelStretchLayout topHeight="50px" startWidth="100px" bottomHeight="50px" id="pt_psl2">
+        <f:facet name="top">
+            <af:panelHeader text="panelHeader 1" id="pt_ph1">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="legend"/>
+                <f:facet name="info"/>
+            </af:panelHeader>
+        </f:facet>
+        <f:facet name="center">
+            <af:decorativeBox theme="dark" id="pt_db2">
+                <f:facet name="center">
+                    <af:panelStretchLayout startWidth="100px" id="pt_psl1">
+                        <f:facet name="center">
+                            <af:decorativeBox theme="medium" id="pt_db1">
+                                <f:facet name="center">
+                                    <af:facetRef facetName="main"/>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </f:facet>
+                        <f:facet name="start"/>
+                    </af:panelStretchLayout>
+                </f:facet>
+            </af:decorativeBox>
+        </f:facet>
+        <f:facet name="bottom"/>
+    </af:panelStretchLayout>
+</af:pageTemplateDef>

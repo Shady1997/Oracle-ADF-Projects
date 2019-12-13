@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="AddInvoicePageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Invoice2_1" RangeSize="25" DataControl="AppModuleAMDataControl" id="Invoice2_1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Invoice2_1Iterator" id="DocumentNumber">
+      <AttrNames>
+        <Item Value="DocumentNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Invoice2_1Iterator" id="InvoiceId">
+      <AttrNames>
+        <Item Value="InvoiceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Invoice2_1Iterator" id="IsPaid">
+      <AttrNames>
+        <Item Value="IsPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Invoice2_1Iterator" id="PaymentMethod">
+      <AttrNames>
+        <Item Value="PaymentMethod"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Invoice2_1Iterator" id="Price">
+      <AttrNames>
+        <Item Value="Price"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Invoice2_1Iterator" StaticList="false" Uses="LOV_ReservationId" id="ReservationId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

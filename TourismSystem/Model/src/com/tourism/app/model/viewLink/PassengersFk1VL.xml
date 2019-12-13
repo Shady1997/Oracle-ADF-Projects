@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PassengersFk1VL"
+  Version="11.1.2.64.36"
+  EntityAssociation="com.tourism.app.model.association.PassengersFk1AS">
+  <ViewLinkDefEnd
+    Name="Reservation"
+    Cardinality="1"
+    Source="true"
+    Owner="com.tourism.app.model.view.ReservationVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Reservation"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.view.ReservationVO.ReservationId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Passengers"
+    Cardinality="-1"
+    Owner="com.tourism.app.model.view.PassengersVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Passengers"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.view.PassengersVO.ReservationId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

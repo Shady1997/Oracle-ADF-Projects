@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TripsEO"
+  Version="11.1.2.64.36"
+  DBObjectType="table"
+  DBObjectName="TRIPS"
+  AliasName="TripsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <Attribute
+    Name="TripId"
+    ColumnName="TRIP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="TRIPS"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="CountryId"
+    IsNotNull="true"
+    ColumnName="COUNTRY_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TRIPS"/>
+  <Attribute
+    Name="TravelDate"
+    IsNotNull="true"
+    ColumnName="TRAVEL_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TRIPS">
+    <validation:CompareValidationBean
+      Name="TravelDate_Rule_0"
+      ResId="com.tourism.app.model.entity.TripsEO.TravelDate_Rule_0"
+      OnAttribute="TravelDate"
+      OperandType="EXPR"
+      Inverse="false"
+      CompareType="GREATERTHANEQUALTO">
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="1"><![CDATA[newValue]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[adf.currentDate]]></validation:TransientExpression>
+    </validation:CompareValidationBean>
+  </Attribute>
+  <Attribute
+    Name="ArriveDate"
+    IsNotNull="true"
+    ColumnName="ARRIVE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TRIPS">
+    <validation:CompareValidationBean
+      Name="ArriveDate_Rule_0"
+      ResId="com.tourism.app.model.entity.TripsEO.ArriveDate_Rule_0"
+      OnAttribute="ArriveDate"
+      OperandType="EXPR"
+      Inverse="false"
+      CompareType="GREATERTHAN">
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="1"><![CDATA[newValue]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[TravelDate]]></validation:TransientExpression>
+    </validation:CompareValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Price"
+    IsNotNull="true"
+    ColumnName="PRICE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TRIPS">
+    <validation:LengthValidationBean
+      Name="Price_Rule_0"
+      ResId="com.tourism.app.model.entity.TripsEO.Price_Rule_0"
+      OnAttribute="Price"
+      CompareType="LESSTHAN"
+      DataType="CHARACTER"
+      CompareLength="7"
+      Inverse="false"/>
+  </Attribute>
+  <Attribute
+    Name="NumbersOfPersons"
+    IsNotNull="true"
+    ColumnName="NUMBERS_OF_PERSONS"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TRIPS"/>
+  <AccessorAttribute
+    Name="Reservation"
+    Association="com.tourism.app.model.association.ReservationFk1AS"
+    AssociationEnd="com.tourism.app.model.association.ReservationFk1AS.Reservation"
+    AssociationOtherEnd="com.tourism.app.model.association.ReservationFk1AS.Trips"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Country"
+    Association="com.tourism.app.model.association.TripsFk1AS"
+    AssociationEnd="com.tourism.app.model.association.TripsFk1AS.Country"
+    AssociationOtherEnd="com.tourism.app.model.association.TripsFk1AS.Trips"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="TripsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="TRIPS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.TripsEO.TripId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="TripsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="COUNTRY_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="TRIPS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.TripsEO.CountryId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.tourism.app.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

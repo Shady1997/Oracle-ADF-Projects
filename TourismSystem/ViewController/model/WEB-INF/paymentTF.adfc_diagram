@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">InvoiceList</property>
+      <property
+         name="page">/reservation.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>InvoiceList&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">183.24707</property>
+      <property
+         name="x">262.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">AddInvoice</property>
+      <property
+         name="page">/AddInvoice.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>AddInvoice&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">187.29883</property>
+      <property
+         name="x">479.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">pay</property>
+      <property
+         name="sdm:polyPoints">R50,303.0,182.89648,438.0,186.94824,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">backToInvoice</property>
+      <property
+         name="sdm:polyPoints">L54,437.89493,190.44824,303.0,186.39648,R54</property>
+   </ControlFlowCase>
+</SDM>

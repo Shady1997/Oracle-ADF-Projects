@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="addPassengerPageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Passengers3" RangeSize="25" DataControl="AppModuleAMDataControl" id="Passengers3Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Passengers3Iterator" id="PassengerName">
+      <AttrNames>
+        <Item Value="PassengerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="ReservationId">
+      <AttrNames>
+        <Item Value="ReservationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="Age">
+      <AttrNames>
+        <Item Value="Age"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="Address">
+      <AttrNames>
+        <Item Value="Address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="NationalId">
+      <AttrNames>
+        <Item Value="NationalId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="Job">
+      <AttrNames>
+        <Item Value="Job"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Passengers3Iterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Passengers3Iterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

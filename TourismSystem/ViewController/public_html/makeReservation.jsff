@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="Reservation" id="ph1">
+      <af:panelFormLayout id="pfl1">
+        <af:panelLabelAndMessage label="#{bindings.ReservationId.hints.label}" id="plam1">
+          <af:outputText value="#{bindings.ReservationId.inputValue}"
+                         shortDesc="#{bindings.ReservationId.hints.tooltip}" id="ot1">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ReservationId.format}"/>
+          </af:outputText>
+        </af:panelLabelAndMessage>
+        <af:panelLabelAndMessage label="#{bindings.ReservationDate.hints.label}" id="plam2">
+          <af:outputText value="#{bindings.ReservationDate.inputValue}"
+                         shortDesc="#{bindings.ReservationDate.hints.tooltip}" id="ot2">
+            <af:convertDateTime pattern="#{bindings.ReservationDate.format}"/>
+          </af:outputText>
+        </af:panelLabelAndMessage>
+        <af:panelLabelAndMessage label="#{bindings.TripId.hints.label}" id="plam3">
+          <af:outputText value="#{bindings.TripId.inputValue}" shortDesc="#{bindings.TripId.hints.tooltip}" id="ot3">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.TripId.format}"/>
+          </af:outputText>
+        </af:panelLabelAndMessage>
+        <f:facet name="footer">
+          <af:panelGroupLayout layout="horizontal" id="pgl2">
+            <f:facet name="separator">
+              <af:spacer width="10" height="1" id="s1"/>
+            </f:facet>
+            <af:commandButton actionListener="#{bindings.First.execute}" text="First"
+                              disabled="#{!bindings.First.enabled}" partialSubmit="true" id="cb1"/>
+            <af:commandButton actionListener="#{bindings.Previous.execute}" text="Previous"
+                              disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="cb2"/>
+            <af:commandButton actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                              partialSubmit="true" id="cb3"/>
+            <af:commandButton actionListener="#{bindings.Last.execute}" text="Last" disabled="#{!bindings.Last.enabled}"
+                              partialSubmit="true" id="cb4"/>
+            <af:commandButton text="Back" id="cb6" action="cancelReservation"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelFormLayout>
+    </af:panelHeader>
+    <af:panelHeader text="Passengers" id="ph2">
+      <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandButton text="Add Passenger" id="cb5" actionListener="#{bindings.CreateInsert.execute}"
+                              disabled="#{!bindings.CreateInsert.enabled}" action="AddPassenger"/>
+            <af:commandToolbarButton text="Confirm Reservation" id="ctb1" actionListener="#{bindings.Commit.execute}"/>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table rows="#{bindings.Passengers3.rangeSize}" fetchSize="#{bindings.Passengers3.rangeSize}"
+                  emptyText="#{bindings.Passengers3.viewable ? 'No data to display.' : 'Access Denied.'}" var="row"
+                  value="#{bindings.Passengers3.collectionModel}" rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.Passengers3.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.Passengers3.collectionModel.makeCurrent}" rowSelection="single" id="t1">
+           
+          <af:column headerText="#{bindings.Passengers3.hints.PassengerName.label}"
+                     sortProperty="#{bindings.Passengers3.hints.PassengerName.name}" sortable="false" id="c2">
+            <af:outputText value="#{row.PassengerName}" shortDesc="#{bindings.Passengers3.hints.PassengerName.tooltip}"
+                           id="ot5"/>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.ReservationId.label}"
+                     sortProperty="#{bindings.Passengers3.hints.ReservationId.name}" sortable="false" id="c3">
+            <af:outputText value="#{row.ReservationId}" shortDesc="#{bindings.Passengers3.hints.ReservationId.tooltip}"
+                           id="ot6">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Passengers3.hints.ReservationId.format}"/>
+            </af:outputText>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.Age.label}"
+                     sortProperty="#{bindings.Passengers3.hints.Age.name}" sortable="false" id="c4">
+            <af:outputText value="#{row.Age}" shortDesc="#{bindings.Passengers3.hints.Age.tooltip}" id="ot7">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Passengers3.hints.Age.format}"/>
+            </af:outputText>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.Address.label}"
+                     sortProperty="#{bindings.Passengers3.hints.Address.name}" sortable="false" id="c5">
+            <af:outputText value="#{row.Address}" shortDesc="#{bindings.Passengers3.hints.Address.tooltip}" id="ot8"/>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.NationalId.label}"
+                     sortProperty="#{bindings.Passengers3.hints.NationalId.name}" sortable="false" id="c6">
+            <af:outputText value="#{row.NationalId}" shortDesc="#{bindings.Passengers3.hints.NationalId.tooltip}"
+                           id="ot9">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Passengers3.hints.NationalId.format}"/>
+            </af:outputText>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.Job.label}"
+                     sortProperty="#{bindings.Passengers3.hints.Job.name}" sortable="false" id="c7">
+            <af:outputText value="#{row.Job}" shortDesc="#{bindings.Passengers3.hints.Job.tooltip}" id="ot10"/>
+          </af:column>
+           
+          <af:column headerText="#{bindings.Passengers3.hints.PhoneNumber.label}"
+                     sortProperty="#{bindings.Passengers3.hints.PhoneNumber.name}" sortable="false" id="c8">
+            <af:outputText value="#{row.PhoneNumber}" shortDesc="#{bindings.Passengers3.hints.PhoneNumber.tooltip}"
+                           id="ot11"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

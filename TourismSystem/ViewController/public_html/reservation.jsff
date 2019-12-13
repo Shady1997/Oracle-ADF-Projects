@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout layout="vertical" id="pgl1">
+    <af:panelHeader text="InvoiceEO" id="ph1">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.InvoiceVOCriteriaQuery.queryDescriptor}"
+                model="#{bindings.InvoiceVOCriteriaQuery.queryModel}"
+                queryListener="#{bindings.InvoiceVOCriteriaQuery.processQuery}"
+                queryOperationListener="#{bindings.InvoiceVOCriteriaQuery.processQueryOperation}"
+                resultComponentId="::pc1:resId1"/>
+    </af:panelHeader>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:commandToolbarButton text="Pay" id="ctb1" actionListener="#{bindings.CreateInsert.execute}" action="pay"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.Invoice1.collectionModel}" var="row" rows="#{bindings.Invoice1.rangeSize}"
+                emptyText="#{bindings.Invoice1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.Invoice1.rangeSize}" rowBandingInterval="0"
+                selectedRowKeys="#{bindings.Invoice1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.Invoice1.collectionModel.makeCurrent}" rowSelection="single" id="resId1"
+                partialTriggers="::ctb1">
+        <af:column sortProperty="#{bindings.Invoice1.hints.InvoiceId.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.InvoiceId.label}" id="resId1c1">
+          <af:outputText value="#{row.InvoiceId}" shortDesc="#{bindings.Invoice1.hints.InvoiceId.tooltip}" id="ot1">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Invoice1.hints.InvoiceId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Invoice1.hints.Price.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.Price.label}" id="resId1c2">
+          <af:outputText value="#{row.Price}" shortDesc="#{bindings.Invoice1.hints.Price.tooltip}" id="ot2">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Invoice1.hints.Price.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Invoice1.hints.PaymentMethod.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.PaymentMethod.label}" id="resId1c3">
+          <af:outputText value="#{row.PaymentMethod}" shortDesc="#{bindings.Invoice1.hints.PaymentMethod.tooltip}"
+                         id="ot3"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.Invoice1.hints.DocumentNumber.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.DocumentNumber.label}" id="resId1c4">
+          <af:outputText value="#{row.DocumentNumber}" shortDesc="#{bindings.Invoice1.hints.DocumentNumber.tooltip}"
+                         id="ot4">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Invoice1.hints.DocumentNumber.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Invoice1.hints.IsPaid.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.IsPaid.label}" id="resId1c5">
+          <af:outputText value="#{row.IsPaid}" shortDesc="#{bindings.Invoice1.hints.IsPaid.tooltip}" id="ot5">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Invoice1.hints.IsPaid.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.Invoice1.hints.ReservationId.name}" sortable="true"
+                   headerText="#{bindings.Invoice1.hints.ReservationId.label}" id="resId1c6">
+          <af:selectOneChoice value="#{row.bindings.ReservationId.inputValue}"
+                              label="#{row.bindings.ReservationId.label}"
+                              required="#{bindings.Invoice1.hints.ReservationId.mandatory}"
+                              shortDesc="#{bindings.Invoice1.hints.ReservationId.tooltip}" readOnly="true" id="soc1">
+            <f:selectItems value="#{row.bindings.ReservationId.items}" id="si1"/>
+          </af:selectOneChoice>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReservationInvoicObjVO"
+  Version="11.1.2.64.36"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.tourism.app.model.view.ReservationInvoicObjVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT 
+    RESERVATION.RESERVATION_ID RESERVATION_ID, 
+    RESERVATION.RESERVATION_DATE RESERVATION_DATE, 
+    RESERVATION.TRIP_ID TRIP_ID, 
+    INVOICE.INVOICE_ID INVOICE_ID, 
+    INVOICE.PRICE PRICE, 
+    INVOICE.PAYMENT_METHOD PAYMENT_METHOD, 
+    INVOICE.DOCUMENT_NUMBER DOCUMENT_NUMBER, 
+    INVOICE.IS_PAID IS_PAID, 
+    INVOICE.RESERVATION_ID RESERVATION_ID1 
+FROM 
+    RESERVATION, 
+    INVOICE]]></SQLQuery>
+  <ViewAttribute
+    Name="ReservationId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="RESERVATION_ID"
+    Expression="RESERVATION_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ReservationDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="RESERVATION_DATE"
+    Expression="RESERVATION_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="TripId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TRIP_ID"
+    Expression="TRIP_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="InvoiceId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="INVOICE_ID"
+    Expression="INVOICE_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Price"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="126"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PRICE"
+    Expression="PRICE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="PaymentMethod"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PAYMENT_METHOD"
+    Expression="PAYMENT_METHOD"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="DOCUMENT_NUMBER"
+    Expression="DOCUMENT_NUMBER"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="IsPaid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="IS_PAID"
+    Expression="IS_PAID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ReservationId1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="RESERVATION_ID1"
+    Expression="RESERVATION_ID1"
+    SQLType="NUMERIC"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.tourism.app.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

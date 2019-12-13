@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReservationVO"
+  Version="11.1.2.64.36"
+  SelectList="ReservationEO.RESERVATION_ID, 
+       ReservationEO.RESERVATION_DATE, 
+       ReservationEO.TRIP_ID"
+  FromList="RESERVATION ReservationEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  FetchMode="FETCH_AS_NEEDED"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <ViewAccessor
+    Name="TripsVO1"
+    ViewObjectName="com.tourism.app.model.view.TripsVO"
+    RowLevelBinds="true"/>
+  <EntityUsage
+    Name="ReservationEO"
+    Entity="com.tourism.app.model.entity.ReservationEO"/>
+  <ViewAttribute
+    Name="ReservationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ReservationId"
+    EntityUsage="ReservationEO"
+    AliasName="RESERVATION_ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="ReservationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ReservationDate"
+    EntityUsage="ReservationEO"
+    AliasName="RESERVATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="TripId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TripId"
+    EntityUsage="ReservationEO"
+    AliasName="TRIP_ID"/>
+  <ViewLinkAccessor
+    Name="Invoice"
+    ViewLink="com.tourism.app.model.viewLink.InvoiceFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="Passengers"
+    ViewLink="com.tourism.app.model.viewLink.PassengersFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

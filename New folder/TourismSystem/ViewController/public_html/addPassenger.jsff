@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Add new Passsenger" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar">
+      <af:toolbar id="t2">
+        <af:commandButton text="Cancel" id="cb1" action="#{pageFlowScope.addPassengerBean.backAction}"
+                          immediate="true"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:commandButton text="Save" id="cb2" actionListener="#{bindings.Execute.execute}"
+                          disabled="#{!bindings.Execute.enabled}" action="backToReservation"/>
+      </af:toolbar>
+    </f:facet>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelFormLayout id="pfl1">
+      <af:inputText value="#{bindings.PassengerName.inputValue}" label="#{bindings.PassengerName.hints.label}"
+                    required="#{bindings.PassengerName.hints.mandatory}"
+                    columns="#{bindings.PassengerName.hints.displayWidth}"
+                    maximumLength="#{bindings.PassengerName.hints.precision}"
+                    shortDesc="#{bindings.PassengerName.hints.tooltip}" id="it1">
+        <f:validator binding="#{bindings.PassengerName.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.ReservationId.inputValue}" label="#{bindings.ReservationId.hints.label}"
+                    required="#{bindings.ReservationId.hints.mandatory}"
+                    columns="#{bindings.ReservationId.hints.displayWidth}"
+                    maximumLength="#{bindings.ReservationId.hints.precision}"
+                    shortDesc="#{bindings.ReservationId.hints.tooltip}" id="it2">
+        <f:validator binding="#{bindings.ReservationId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.ReservationId.format}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Age.inputValue}" label="#{bindings.Age.hints.label}"
+                    required="#{bindings.Age.hints.mandatory}" columns="#{bindings.Age.hints.displayWidth}"
+                    maximumLength="#{bindings.Age.hints.precision}" shortDesc="#{bindings.Age.hints.tooltip}" id="it3">
+        <f:validator binding="#{bindings.Age.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.Age.format}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Address.inputValue}" label="#{bindings.Address.hints.label}"
+                    required="#{bindings.Address.hints.mandatory}" columns="#{bindings.Address.hints.displayWidth}"
+                    maximumLength="#{bindings.Address.hints.precision}" shortDesc="#{bindings.Address.hints.tooltip}"
+                    id="it4">
+        <f:validator binding="#{bindings.Address.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.NationalId.inputValue}" label="#{bindings.NationalId.hints.label}"
+                    required="#{bindings.NationalId.hints.mandatory}"
+                    columns="#{bindings.NationalId.hints.displayWidth}"
+                    maximumLength="#{bindings.NationalId.hints.precision}"
+                    shortDesc="#{bindings.NationalId.hints.tooltip}" id="it5">
+        <f:validator binding="#{bindings.NationalId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.NationalId.format}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Job.inputValue}" label="#{bindings.Job.hints.label}"
+                    required="#{bindings.Job.hints.mandatory}" columns="#{bindings.Job.hints.displayWidth}"
+                    maximumLength="#{bindings.Job.hints.precision}" shortDesc="#{bindings.Job.hints.tooltip}" id="it6">
+        <f:validator binding="#{bindings.Job.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.PhoneNumber.inputValue}" label="#{bindings.PhoneNumber.hints.label}"
+                    required="#{bindings.PhoneNumber.hints.mandatory}"
+                    columns="#{bindings.PhoneNumber.hints.displayWidth}"
+                    maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                    shortDesc="#{bindings.PhoneNumber.hints.tooltip}" id="it7">
+        <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+      </af:inputText>
+    </af:panelFormLayout>
+  </af:panelHeader>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:addPassengerBean-->
+</ui:composition>

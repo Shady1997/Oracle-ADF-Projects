@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36" id="makeReservationPageDef"
+                Package="com.tourism.app.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Reservation2" RangeSize="25" DataControl="AppModuleAMDataControl" id="Reservation2Iterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="Passengers3" RangeSize="25" DataControl="AppModuleAMDataControl" id="Passengers3Iterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="Invoice3" RangeSize="25" DataControl="AppModuleAMDataControl" id="Invoice3Iterator"
+              ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Reservation2Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="Reservation2Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Reservation2Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="Reservation2Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="Reservation2Iterator" id="ReservationId">
+      <AttrNames>
+        <Item Value="ReservationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Reservation2Iterator" id="ReservationDate">
+      <AttrNames>
+        <Item Value="ReservationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Reservation2Iterator" id="TripId">
+      <AttrNames>
+        <Item Value="TripId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Passengers3Iterator" id="Passengers3">
+      <nodeDefinition DefName="com.tourism.app.model.view.PassengersVO" Name="Passengers30">
+        <AttrNames>
+          <Item Value="PassengersId"/>
+          <Item Value="PassengerName"/>
+          <Item Value="ReservationId"/>
+          <Item Value="Age"/>
+          <Item Value="Address"/>
+          <Item Value="NationalId"/>
+          <Item Value="Job"/>
+          <Item Value="PhoneNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Passengers3Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleAMDataControl"/>
+  </bindings>
+</pageDefinition>

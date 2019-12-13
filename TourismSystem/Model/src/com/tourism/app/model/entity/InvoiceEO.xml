@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InvoiceEO"
+  Version="11.1.2.64.36"
+  DBObjectType="table"
+  DBObjectName="INVOICE"
+  AliasName="InvoiceEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <Attribute
+    Name="InvoiceId"
+    ColumnName="INVOICE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="INVOICE"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true"/>
+  <Attribute
+    Name="Price"
+    IsNotNull="true"
+    Precision="126"
+    ColumnName="PRICE"
+    SQLType="FLOAT"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="FLOAT"
+    TableName="INVOICE"/>
+  <Attribute
+    Name="PaymentMethod"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="PAYMENT_METHOD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="INVOICE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocumentNumber"
+    IsNotNull="true"
+    ColumnName="DOCUMENT_NUMBER"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="INVOICE"/>
+  <Attribute
+    Name="IsPaid"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="IS_PAID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="INVOICE"
+    DefaultValue="0"/>
+  <Attribute
+    Name="ReservationId"
+    IsNotNull="true"
+    ColumnName="RESERVATION_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="INVOICE"/>
+  <AccessorAttribute
+    Name="Reservation"
+    Association="com.tourism.app.model.association.InvoiceFk1AS"
+    AssociationEnd="com.tourism.app.model.association.InvoiceFk1AS.Reservation"
+    AssociationOtherEnd="com.tourism.app.model.association.InvoiceFk1AS.Invoice"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="InvoicePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="INVOICE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.InvoiceEO.InvoiceId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="InvoiceFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="RESERVATION_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="INVOICE_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.tourism.app.model.entity.InvoiceEO.ReservationId"/>
+    </AttrArray>
+  </Key>
+</Entity>
